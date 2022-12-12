@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="profile.css">
+<link rel="stylesheet" href="web.css">
+</head>
+<body>  
+    <div class="container-navbar col-lg-12">
+        <div id="logo" class="col-lg-3 row">  
+         <img src="194951-OYGT7F-682 copy.png" alt="">
+         <h1>STARS</h1>
+        </div>
+             <div id="menu" class="col-lg-9 row">
+             <a href="profile" class="a-navbar">PROFILE</a>
+             <a href="store" class="a-navbar">STORE</a>
+             <a href="/logout" class="a-navbar">LOGOUT</a>
+        <!-- <a href="profile" class="a-navbar">PROFILE</a> -->
+        <!-- <a href="login12" class="a-navbar">LOGIN</a> -->
+             </div>
+     </div>
+    <br> <br>
+
+    <div class="col-lg-12 row container">
+    <div class="table1 col-lg-6">
+    <table class="col-lg-12">
+    <ul>
+        <tr>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        <tr>
+        <% for( const s of user) { %>
+         <tr>
+         <td><%= s.nama %></td>
+         <td><%= s.email %></td>
+         <td><%= s.password %></td>
+         <!-- <td class="delete"><a href="/update/<%= s.id %> ">Update</a></td> -->
+         <td class="delete" style="width:10px ;"><a href="/delete/<%= s.id %>">Delete</a></td>
+         <td class="delete"><a href="/edit/<%= s.id %>">Edit</a></td>
+        </tr>
+        <% } %>
+     </tr>
+    </ul>
+    </table>
+    </div>
+</div>
+</body>
+</html>

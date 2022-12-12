@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="contact.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+       <!-- nav bar -->
+       <div class="container-navbar col-lg-12">
+        <div id="logo" class="col-lg-3 row">  
+         <img src="194951-OYGT7F-682 copy.png" alt="">
+         <h1>STARS</h1>
+        </div>
+             <div id="menu" class="col-lg-9 row">
+             <a href="profile" class="a-navbar">PROFILE</a>
+             <a href="store" class="a-navbar">STORE</a>
+             <a href="/logout" class="a-navbar">LOGOUT</a>
+        <!-- <a href="profile" class="a-navbar">PROFILE</a> -->
+        <!-- <a href="login12" class="a-navbar">LOGIN</a> -->
+             </div>
+     </div>
+
+     <header class="bg-stone-800 text-white p-4 shadow-lg">
+		<h1 class="text-center font-bold text-xl">Gudang Barang</h1>
+	</header>
+	<section class="p-4 mt-4 bg-white shadow-lg">
+		<h2 class="font-bold text-lg mb-4 border-b">Tambah Item</h2>
+		<form action="/items/tambah" method="post">
+
+            <label>Nama Item</label>
+			<div class="flex items-center">
+				<input type="text" name="name" placeholder="Nama Item" class="w-4/5 w-full border px-3 py-2 text-sm mr-2" required>
+            </div>
+            <label>Harga</label>
+            <div class="flex items-center">
+				<input type="text" name="Harga" placeholder="Harga" class="w-4/5 w-full border px-3 py-2 text-sm mr-2" required>
+            </div>
+            <label>Gambar</label>
+            <div class="flex items-center">
+				<input type="file" name="Gambar" placeholder="Gambar" class="w-4/5 w-full border px-3 py-2 text-sm mr-2" required>
+                <button class="w-1/5 bg-slate-500 text-white px-3 py-2 border text-sm font-bold tracking-widest hover:bg-slate-600">Tambah</button>
+            </div>
+
+		</form>
+	</section>
+	<section class="p-4 mt-4 bg-white shadow-lg">
+		<h2 class="font-bold text-lg mb-4 border-b">Transaksi Item</h2>
+		<form action="/items/transaksi" method="post">
+			<div class="flex items-center">
+				<select name="type" class="w-1/5 w-full border px-3 py-2 text-sm mr-2 bg-white">
+					<option value="masuk">Masuk</option>
+					<option value="keluar">Keluar</option>
+				</select>
+				<select name="item_id" class="w-2/5 w-full border px-3 py-2 text-sm mr-2 bg-white">
+					<% for (item of items) { %>
+						<option value="<%= item.id %>"><%= item.name %></option>
+					<% } %>
+				</select>
+				<input type="number" name="amount" value="0" class="w-1/5 w-full border px-3 py-2 text-sm mr-2 bg-white">
+				<button class="w-1/5 bg-slate-500 text-white px-3 py-2 border text-sm font-bold tracking-widest hover:bg-slate-600">Submit</button>
+			</div>
+		</form>
+	</section>
+	<section class="p-4 mt-4 bg-white shadow-lg">
+		<h2 class="font-bold text-lg mb-4 border-b">Pembukuan</h2>
+        <table>
+            <ul>
+                <tr>
+                    <th class="border">Nama</th>
+                    <th class="border">Tipe</th>
+                    <th class="border">Nama Item</th>
+                    <th class="border">Jumlah</th>
+                    <th class="border">Waktu</th>
+                </tr>
+                <tr>
+			<% for (log of pembukuan) { %>
+                <tr>
+                    <th class="border"><%= log.name %> </th>
+                    <th class="border"><%= log.type %></th>
+                    <th class="border"><%= items.find(item => item.id === log.item_id).name %></th>
+                    <th class="border"><%= log.amount %></th>
+                    <th class="border"><%= log.create_time %></th>  
+                    <th><a href="/deleteHistory/<%= log.id %>">Delete</a> </th>
+                </tr>
+			<% } %>
+                </tr>
+            </ul>
+        </table>
+             
+
+	</section>
+	<section class="p-4 mt-4 bg-white shadow-lg">
+            <table class="col-lg-12">
+            <ul>
+                <tr>
+                    <th class="border">Nama Item</th>
+                    <th class="border">Harga Item</th>
+                    <th class="border">Stok Item</th>
+                    <th class="border">Status</th>
+                    <th class="border">Gambar Item</th>
+                </tr>
+                <% for (item of items) { %>
+                <tr>
+                    <td class="border"><%= item.name %></td>
+                    <td class="border"><%= item.Harga %></td>
+                    <td class="border"><%= item.qty %></td>
+                    <td class="border"><%= item.status %> </td>
+                    <td class="border"><img src="<%= item.Gambar %>" style="height:100px ; width:100px;" alt=""></td>
+                    <td><a href="/deleteStok/<%= item.id %>">Delete</a></td>
+                    <td><a href="/updateStatus/<%= item.id %> ">Update Ready</a></td>
+                    <td><a href="/updateStatus1/<%= item.id %> ">Update Belum Ready</a></td>
+                </tr>
+                 <% } %>
+            </ul>
+</div>
+	</section>
+</body>
+</html>

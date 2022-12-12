@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: url("1624.jpg") no-repeat center center fixed; 
+    background-size: cover;
+}
+
+#logo>img {
+height: 80px;
+margin-left: 50px;
+animation: star 3s infinite;
+}
+@keyframes star {
+    50% {opacity: 0;}
+}
+#logo>img:hover{
+    height: 80px;
+    margin-left: 50px;
+    animation:none;
+}
+#logo>h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: black;
+    background-color: rgb(255, 255, 255);
+    /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-shadow:  0 0 20px 10px rgb(255, 255, 255);
+    font-size: 50px;
+    
+    margin-top: 10px;
+    height: 60px;
+    width:50%;
+    border-radius: 50px;
+}
+
+.container{
+    background-color: darkgrey;
+}
+
+.content{
+    background-color: white;
+}
+
+.container-navbar {
+    background:url("4Z_2101.w017.n001.333A.p30.333.jpg");
+    background-position: center;
+    background-size: cover;
+    background-position: top 10px;
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index:1 ;
+}
+
+.container-navbar>#menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 30px;
+}
+
+.container-navbar>#menu>a {
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 4vh;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.container-navbar>#menu>a:hover {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    transition: .5% ease-in-out;
+    transition-delay: .3s;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.541);
+}
+
+.a-navbar {
+    color: white;
+    text-decoration: none;
+}

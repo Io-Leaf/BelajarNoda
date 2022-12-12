@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="userTransaksi.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container-navbar col-lg-12">
+        <div id="logo" class="col-lg-3 row">  
+         <img src="194951-OYGT7F-682 copy.png" alt="">
+         <h1>STARS</h1>
+        </div>
+             <div id="menu" class="col-lg-9 row">
+             <a href="home" class="a-navbar">HOME</a>
+             <!-- <a href="about" class="a-navbar">ABOUT</a> -->
+             <a href="userTransaksi" class="a-navbar">STORE</a>
+             <a href="/logout" class="a-navbar">LOGOUT</a>
+        <!-- <a href="profile" class="a-navbar">PROFILE</a> -->
+        <!-- <a href="login12" class="a-navbar">LOGIN</a> -->
+             </div>
+     </div>
+    
+    <section>
+    <h2 class="font-bold text-lg mb-4 border-b">Transaksi Item</h2>
+    <form action="/items/beli" method="post">
+        <div class="flex items-center">
+            <input type="text" class="w-1/5 w-full border px-3 py-2 text-sm mr-2 bg-white" name="name" placeholder="Pengguna">
+            <select name="type" class="w-1/5 w-full border px-3 py-2 text-sm mr-2 bg-white">
+                <option value="dibeli">beli</option>
+            </select>
+            <select name="item_id" class="w-2/5 w-full border px-3 py-2 text-sm mr-2 bg-white">
+                <% for (item of items) { %>
+                    <option value="<%= item.id %>"><%= item.name %></option>
+                <% } %>
+            </select>
+            <input type="number" name="amount" value="0" class="w-1/5 w-full border px-3 py-2 text-sm mr-2 bg-white">
+            <button class="w-1/5 bg-slate-500 text-white px-3 py-2 border text-sm font-bold tracking-widest hover:bg-slate-600">Buy</button>
+        </div>
+    </form>
+</section>
+
+  
+    <div class="album py-5 bg-light mb-5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-2 row-cols-md-3 g-3">
+                <h3 class="subjudul mb-3">Store</h3>
+                <% for(item of items ) { %>
+                    <div class="content col p-3">
+                        <div class="card" style="border-radius:10px; align-items:center">
+                        <img width="295px" height="295px" src="<%= item.Gambar %> " alt="">
+                        <div class="card-body" style="align-items:center ;">
+                            <h4 class="card-title"><%= item.name %> </h4>
+                            <h6 class="card-title"><%= item.Harga %> </h6>
+                            <h6 class="card-title"><%= item.qty %></h6>
+                        </div>
+                        </div>
+
+                    </div>
+                
+                <% } %>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
